@@ -7,12 +7,8 @@ import requests
 # Load environment variables from .env file
 load_dotenv()
 
-# Load API keys from environment variables
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Load API key from environment variable
 AIDEVS2_API_KEY = os.getenv("AIDEVS2_API_KEY")
-
-# Set the OpenAI API key
-openai.api_key = OPENAI_API_KEY
 
 BASE_URL = "https://zadania.aidevs.pl"
 HEADERS = {"Content-Type": "application/json"}
