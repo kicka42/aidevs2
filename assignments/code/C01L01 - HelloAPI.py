@@ -1,4 +1,3 @@
-import os
 from api_utilities.aidevs2_api import get_token, get_task_details, post_answer
 
 TASK_NAME = 'helloapi'

@@ -11,20 +11,11 @@ load_dotenv()
 # Load API keys from environments variable
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-HEADERS = {"Content-Type": "application/json"}
-
 # Initialize the OpenAI client
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
 
 
 def connect_openai(model):
-    """
-    Connect to an OpenAI model.
-
-    :param model: The name or ID of the OpenAI model to connect to.
-    :return: The connected OpenAI model object.
-
-    """
     try:
         result = client_openai.models.get_model(model)
         return result

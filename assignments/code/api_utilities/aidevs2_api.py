@@ -4,10 +4,8 @@ import openai
 import json
 import requests
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Load API key from environment variable
 AIDEVS2_API_KEY = os.getenv("AIDEVS2_API_KEY")
 
 BASE_URL = "https://zadania.aidevs.pl"
@@ -59,14 +57,6 @@ def get_task_details(token_key, print_task=False):
 
 
 def post_answer(token_key, answer_value, print_answer=False):
-    """
-    Post an answer.
-
-    :param token_key: The token key for the answer.
-    :param answer_value: The value of the answer.
-    :param print_answer: Whether to print the answer data. Default is False.
-    :return: None.
-    """
     endpoint = f"/answer/{token_key}"
     response_data = {
         "answer": answer_value
@@ -74,3 +64,19 @@ def post_answer(token_key, answer_value, print_answer=False):
     response_json = api_call(endpoint, 'post', data=json.dumps(response_data), headers=HEADERS)
     if print_answer:
         print(f"answer:{response_json}")
+
+
+# assigment C01L04 Liar
+def post_question(token_key, question, print_response=False):
+    endpoint = f"/task/{token_key}"
+    question = {
+        "question": question
+    }
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    response = api_call(endpoint, 'post', data=question, headers=headers)
+    if print_response:
+        print(f"answer:{response}")
+
+    return response['answer']
