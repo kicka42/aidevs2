@@ -14,14 +14,12 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # Initialize the OpenAI client
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
 
-
 def connect_openai(model):
     try:
         result = client_openai.models.get_model(model)
         return result
     except Exception as e:
         return str(e)
-
 
 # Function for assigment C01L04
 def moderate(text_to_moderate, print_score=False):
